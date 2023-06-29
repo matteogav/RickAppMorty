@@ -36,9 +36,8 @@ fun EpisodesScreen(navController: NavController, episodes: List<Int>) {
     val viewModel = getViewModel<EpisodesViewModel>()
     val episodesList by viewModel.episodes.collectAsState()
 
-    LaunchedEffect(viewModel.viewModelScope) {
-        viewModel.getEpisodes(episodes)
-    }
+    viewModel.getEpisodes(episodes)
+
     Column(Modifier.fillMaxSize()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
