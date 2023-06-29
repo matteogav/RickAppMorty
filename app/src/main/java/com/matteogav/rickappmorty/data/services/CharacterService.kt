@@ -9,11 +9,11 @@ interface CharacterService {
     suspend fun getCharacters(@Query("page") page: Int): CharacterModel?
 
     @GET("character")
-    suspend fun getCharactersFiltered(@Query("page") page: Int, @Query("species") species: String): CharacterModel
+    suspend fun getCharactersFiltered(@Query("page") page: Int, @Query("species") species: String): CharacterModel?
 
     @GET("character")
-    suspend fun getCharactersSearch(@Query("page") page: Int, @Query("name") name: String): CharacterModel
+    suspend fun getCharactersSearch(@Query("page") page: Int, @Query("name") name: String): CharacterModel?
 
     @GET("character")
-    suspend fun getCharactersFilteredSearch(@Query("page") page: Int, @Query("species") species: String, @Query("name") name: String): CharacterModel
+    suspend fun getCharactersFilteredSearch(@Query("page") page: Int, @Query("species") species: String, @Query("name") name: String): CharacterModel?
 }

@@ -40,11 +40,11 @@ class CharacterRepositoryImpl (private val characterDao: CharacterDao): Characte
         return withContext(Dispatchers.IO) {
             val result = characterService.getCharactersFiltered(page, filter)
             val characters: List<Character> =
-                result.results.filter {
+                result?.results?.filter {
                     it.species.equals(filter, ignoreCase = true)
-                }.map {
+                }?.map {
                     it.toDomain(result.info)
-                }
+                } ?: emptyList()
             return@withContext characters
         }
     }
@@ -52,7 +52,7 @@ class CharacterRepositoryImpl (private val characterDao: CharacterDao): Characte
     override suspend fun getCharactersSearch(page: Int, search: String): List<Character> {
         return withContext(Dispatchers.IO) {
             val result = characterService.getCharactersSearch(page, search)
-            val characters: List<Character> = result.results.map { it.toDomain(result.info) }
+            val characters: List<Character> = result?.results?.map { it.toDomain(result.info) } ?: emptyList()
             return@withContext characters
         }
     }
@@ -61,11 +61,11 @@ class CharacterRepositoryImpl (private val characterDao: CharacterDao): Characte
         return withContext(Dispatchers.IO) {
             val result = characterService.getCharactersFilteredSearch(page, filter, search)
             val characters: List<Character> =
-                result.results.filter {
+                result?.results?.filter {
                     it.species.equals(filter, ignoreCase = true)
-                }.map {
+                }?.map {
                     it.toDomain(result.info)
-                }
+                } ?: emptyList()
             return@withContext characters
         }
     }
