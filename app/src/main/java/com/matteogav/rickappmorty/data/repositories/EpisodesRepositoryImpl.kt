@@ -32,7 +32,7 @@ class EpisodesRepositoryImpl(private val episodeDao: EpisodeDao) : EpisodesRepos
     override suspend fun insertEpisodesIntoDB(episodes: List<EpisodeEntity>) {
         episodeDao.insertEpisodes(episodes)
     }
-1
+
     override suspend fun clearEpisodesFromDB(episodes: List<Int>) {
         episodeDao.clearEpisodes(episodes)
     }
